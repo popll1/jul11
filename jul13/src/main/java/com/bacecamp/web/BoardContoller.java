@@ -10,6 +10,7 @@ import java.util.Map;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,7 +25,7 @@ public class BoardContoller {
 		
 		List<BoardDTO> list = new ArrayList<BoardDTO>();
 		for (int i = 0; i < 10; i++) {
-			BoardDTO e = new BoardDTO();
+			BoardDTO e = new BoardDTO(i,i + "번째 글 입니다.", "홍길동", "2023-07-"+i, i + 10);
 //			e.setBno(i);
 //			e.setBtitle(i + "번째 글 입니다.");
 //			e.setBwrite("홍길동");
@@ -54,7 +55,20 @@ public class BoardContoller {
 			
 			return mv;  //jsp 파일명
 		}
+		@GetMapping("/board2")
+		public String board2(Model model) {
+			model.addAttribute("name", "홍길동");
 		
+			List<BoardDTO> list = new ArrayList<BoardDTO>();
+			for (int i = 0; i < 11; i++) {
+				BoardDTO dto = new BoardDTO(i, "제목입니다", "홍길동", "2032-07-13", i );
+				list.add(dto);
+				
+			}
+			model.addAttribute("list", list);
+			
+		return "board2";
+		}
 		
 	}
 	
