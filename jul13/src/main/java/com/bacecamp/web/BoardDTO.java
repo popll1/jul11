@@ -16,8 +16,6 @@ public class BoardDTO {
 	
 	
 	
-	
-	
 		public int getBno() {
 		return bno;
 	}
