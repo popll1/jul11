@@ -6,14 +6,16 @@ package com.bacecamp.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class BoardContoller {
 	//사용자가 /board라고 호출하면 동작할 메소드를 만들겠습니다.
 	
 	@GetMapping("/board")
-	public String board() { 
-		return "board";  //jsp 파일명
+	public ModelAndView board() { 
+		ModelAndView mv = new ModelAndView("board");//jsp 파일명
+		return "mv";  //jsp 파일명
 		
 		
 	}
