@@ -1,6 +1,11 @@
 package com.bacecamp.web;
 
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 // ctrl + shift + o -->  임포트 정리해주기.
 
 
@@ -15,7 +20,40 @@ public class BoardContoller {
 	@GetMapping("/board")
 	public ModelAndView board() { 
 		ModelAndView mv = new ModelAndView("board");//jsp 파일명
-		return "mv";  //jsp 파일명
+		mv.addObject("name","홍길동");
+		
+		List<BoardDTO> list = new ArrayList<BoardDTO>();
+		for (int i = 0; i < 10; i++) {
+			BoardDTO e = new BoardDTO();
+//			e.setBno(i);
+//			e.setBtitle(i + "번째 글 입니다.");
+//			e.setBwrite("홍길동");
+//			e.setBtate("2023-07-"+i);
+//			e.setBlike(i + 10);
+			list.add(e);
+		}
+		mv.addObject("list",list);
+			
+			List<Map<String, Object>> list2 = new ArrayList<Map<String,Object>>();
+			
+			for (int i = 0; i < 10; i++) {
+				Map<String,Object> e = new HashMap<String, Object>();
+				e.put("bno", i );
+				e.put("btitle", i + "번쨰 글 입니다2" );
+				e.put("bwrite", " 홍길동");
+				e.put("btate", "2023 - 07 - 13");
+				e.put("blike",  i * 10);
+				list2.add( e);
+				
+				
+			}
+				
+			
+			
+			mv.addObject("list2",list2);
+			
+			return mv;  //jsp 파일명
+		}
 		
 		
 	}
@@ -24,4 +62,4 @@ public class BoardContoller {
 	
 	
 	
-}
+
